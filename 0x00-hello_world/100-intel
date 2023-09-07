@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Check if the C file variable is set
+if [ -z "$CFILE" ]; then
+    echo "Error: Please set the C file name in the \$CFILE variable."
+    exit 1
+fi
+
+# Generate the assembly code and save it as .s file
+gcc -S -masm=intel "$CFILE"
+
+echo "Assembly code has been generated and saved as '${CFILE%.c}.s'."
